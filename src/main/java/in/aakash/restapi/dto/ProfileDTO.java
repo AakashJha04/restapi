@@ -1,7 +1,5 @@
-package in.aakash.restapi.io;
+package in.aakash.restapi.dto;
 
-import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import lombok.AllArgsConstructor;
@@ -13,19 +11,14 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ExpenseResponse {
+public class ProfileDTO {
+    private String profileId;
 
-    private String expenseId;
+    private String email;
 
     private String name;
 
-    private String note;
-
-    private String category;
-
-    private Date date;
-
-    private BigDecimal amount;
+    private String password;
 
     private Timestamp createdAt;
 

@@ -13,9 +13,8 @@ public class RestapiApplication {
 	}
 
 	@Bean
-	public ModelMapper modelMapper(){
+	public ModelMapper modelMapper() {
 		return new ModelMapper();
 	}
-
 
 }

@@ -1,22 +1,15 @@
 package in.aakash.restapi.entity;
 
-import java.math.BigDecimal;
-import java.sql.Date;
 import java.sql.Timestamp;
 
 import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.OnDelete;
-import org.hibernate.annotations.OnDeleteAction;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,38 +17,31 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name = "tbl_expenses")
+@Table(name = "tbl_profile")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ExpenseEntity {
+public class ProfileEntity {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(unique = true)
-    private String expenseId;
+    private String profileId;
+
+    @Column(unique = true)
+    private String email;
 
     private String name;
 
-    private String note;
+    private String password;
 
-    private String category;
-
-    private Date date;
-
-    private BigDecimal amount;
-
+    @Column(updatable = false)
     @CreationTimestamp
-    @Column(nullable = false, updatable = false)
     private Timestamp createdAt;
 
     @UpdateTimestamp
     private Timestamp updatedAt;
-
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "owner_id", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    private ProfileEntity owner;
 }
